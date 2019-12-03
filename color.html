@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+            <input type="text" v-model="textoDigitado"
+            v-on:keyup.enter="alterarNome()">
+            <ul>
+              <li v-for="items in array"
+              style="background: green"
+              @click="alerta($event)">
+                  {{items}}
+              </li>
+            </ul>
+
+            <input @click="colorirParagrafo($event.target.value)" type="radio" name="color" value="b">Blue</br>
+            <input @click="colorirParagrafo($event.target.value)" type="radio" name="color" value="r">Red</br>
+            <input @click="colorirParagrafo($event.target.value)" type="radio" name="color" value="y">Yellow</br>
+            <input @click="colorirParagrafo($event.target.value)" type="radio" name="color" value="g">Green</br>
+
+            <button @click="vermelho()">Red</button>
+            <button @click="azul()">Blue</button>
+            <button @click="green()">Green</button>
+            <button @click="yellow()">Yellow</button>
+            
+
+            <p v-bind:class="{blue: colors.azul, red: colors.vermelho, yellow: colors.amarelo, green: colors.verde}">
+              Despadronização causa ódio
+            </p>
+
+    </div>
+
+    <style>
+       .blue
+       {
+           background-color: blue;
+       }
+
+       .red
+       {
+           background-color: red;
+       }
+
+       .yellow
+       {
+           background-color:yellow;
+       }
+
+       .green
+       {
+           background-color: green;
+       }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+       new Vue({
+         el: '#app',
+         data: {
+            colors: {
+                vermelho: false,
+                azul: false,
+                verde: false,
+                amarelo: false
+            },
+            classParagrafo: 'blue',
+            textoDigitado: "",
+            array : []
+            
+        },
+
+        methods: {
+            alterarNome()
+            {
+                this.array.push(this.textoDigitado);
+                this.textoDigitado = '';
+            },
+            
+            alerta(event)
+            {
+                element = event.target;
+                //alert(event.target.textContent.trim());
+                //event.target.value = "background: green";
+
+                if(element.style.background == 'green')
+                    event.target.style = "background: yellow";
+
+                else
+                    event.target.style = "background: green";
+                
+            },
+            colorirParagrafo(color)
+            {
+                this.classParagrafo = color;
+            },
+
+            vermelho()
+            {
+                this.colors.vermelho = true;
+                this.colors.azul = false;
+                this.colors.verde = false;
+                this.colors.amarelo = false;
+            },
+
+            azul()
+            {
+                this.colors.vermelho = false;
+                this.colors.azul = true;
+                this.colors.verde = false;
+                this.colors.amarelo = false;
+            },
+
+            green()
+            {
+                this.colors.vermelho = false;
+                this.colors.azul = false;
+                this.colors.verde = true;
+                this.colors.amarelo = false;
+            },
+
+            yellow()
+            {
+                this.colors.vermelho = false;
+                this.colors.azul = false;
+                this.colors.verde = false;
+                this.colors.amarelo = true;
+            }
+
+            
+        },     
+       })
+    </script>
+</body>
+</html>

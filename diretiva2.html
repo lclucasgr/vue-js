@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+    <div id="app">
+        <input type="text" v-model="textoDigitado">
+        {{textoDigitado}}
+        <br>
+        <div v-if="textoDigitado == 'vue'">
+            <img :src="vue" :title="title">
+        </div>     
+        
+        <div v-else-if="textoDigitado == 'javascript'">
+            <img :src="javascript" :title="title">
+        </div>     
+
+        <div v-else="textoDigitado == 'node'">
+            <img :src="node" :title="title">
+        </div>     
+    </div>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+       new Vue({
+         el: '#app',
+         data: {
+            textoDigitado : '',
+            vue: 'vue.png',
+            javascript: 'javascript.png',
+            node: 'node.jpg',
+            title: 'Logo vue'
+         }
+       })
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+            <input type="text" v-model="textoDigitado"
+            v-on:keyup.enter="alterarNome()">
+            <ul>
+              <li v-for="items in array"
+              style="background: green"
+              @click="alerta($event)">
+                  {{items}}
+              </li>
+            </ul>
+
+            <input @click="colorirParagrafo($event.target.value)" type="radio" name="color" value="b">Blue</br>
+            <input @click="colorirParagrafo($event.target.value)" type="radio" name="color" value="r">Red</br>
+            <input @click="colorirParagrafo($event.target.value)" type="radio" name="color" value="y">Yellow</br>
+            <input @click="colorirParagrafo($event.target.value)" type="radio" name="color" value="g">Green</br>
+
+            <p v-bind:class="classParagrafo">
+              Despadronização causa ódio
+            </p>
+
+    </div>
+
+    <style>
+       .b
+       {
+           background-color: blue;
+       }
+
+       .r
+       {
+           background-color: red;
+       }
+
+       .y
+       {
+           background-color:yellow;
+       }
+
+       .g
+       {
+           background-color: green;
+       }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+       new Vue({
+         el: '#app',
+         data: {
+            classParagrafo: 'blue',
+            textoDigitado: "",
+            array : []
+            
+        },
+
+        methods: {
+            alterarNome()
+            {
+                this.array.push(this.textoDigitado);
+                this.textoDigitado = '';
+            },
+            
+            alerta(event)
+            {
+                element = event.target;
+                //alert(event.target.textContent.trim());
+                //event.target.value = "background: green";
+
+                if(element.style.background == 'green')
+                    event.target.style = "background: yellow";
+
+                else
+                    event.target.style = "background: green";
+                
+            },
+            colorirParagrafo(color)
+            {
+                this.classParagrafo = color;
+            }
+
+            
+        },     
+       })
+    </script>
+</body>
+</html>

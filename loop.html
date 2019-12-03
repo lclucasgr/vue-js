@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+    <!--
+    <div id="app">
+        <div v-for="imagem in imagens">
+            <img :src="imagem"/>
+        </div>     
+    </div>
+    !-->
+
+    <!--
+    <div id="app">
+        <p v-for="(time, index) in times">
+            {{index+1}}º - {{time.nome}}/{{time.uf}}
+        </p>
+    </div>
+    !-->
+
+
+<body>
+
+    <div id="app">
+        <ul>
+            <li v-for="(value, key, index) in time">
+            <b>{{index+1}} - {{key}}</b>: {{value}}
+            </li>
+        </ul>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+       new Vue({
+         el: '#app',
+         data: {
+            imagens: ["vue.png", "javascript.png", "node.jpg"],
+            times: [
+                { nome: 'Palmeiras', uf: 'SP'}, 
+                { nome: 'Gremio', uf: 'RS'}, 
+                { nome: 'Cruzeiro', uf: 'MG'}, 
+                { nome: 'Botafogo', uf:'RJ'} ],
+           
+                time:
+           {
+                nome: "Palmeiras",
+                uf: "SP",
+                posicao: "1",
+                titulos: "10"
+
+           }   
+            
+        }
+       })
+    </script>
+</body>
+</html>

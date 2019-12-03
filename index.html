@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <p>{{msg}}</p>
+        <p>{{isTrue ? 'Verdade' : 'fake'}}</p>
+        <p>{{times[2]}}</p>
+        <p>{{aluno.nome}}</p>
+        <p>{{num + 1}}</p>
+        <p>{{fun()}}</p>
+        <p>{{func()}}</p>
+        <p>{{metodo()}}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                msg: 'Quem tem mais tem 10',
+                isTrue: true,
+                times: ['Palmeiras', 'Vasco', 'Santos', 'Botafogo'],
+                aluno: { nome: 'Paulo' },
+                num: 1,
+                fun: function()
+                {
+                    return 'Quem tem mais tem 10'
+                },
+
+                func: () =>
+                {
+                    return 'Its a callback function'
+                },
+                //Sempre quando ter 2 ou mais functions deixar a virgula no ultimo
+
+            },
+
+            methods:{
+                metodo()//index
+                {
+                    return '14 colocado '+this.times[1]//index
+                }
+            }
+            //Nao usar virgula caso existe 2 funcoes seguidas
+            
+
+        })    
+    </script>
+    
+</body>
+</html>
